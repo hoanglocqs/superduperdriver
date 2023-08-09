@@ -19,14 +19,12 @@ import java.io.File;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 class CloudStorageApplicationTests {
-	final String USERNAME = "admin";
-	private static final String PASSWORD = "123456";
+	final String USERNAME = "LocNH14";
+	final String PASSWORD = "123456";
 	@LocalServerPort
 	private int port;
 
 	private WebDriver driver;
-	@Autowired
-	private MockMvc mockMvc;
 	@BeforeAll
 	static void beforeAll() {
 		WebDriverManager.chromedriver().setup();
@@ -40,7 +38,7 @@ class CloudStorageApplicationTests {
 	@AfterEach
 	public void afterEach() {
 		if (this.driver != null) {
-			//driver.quit();
+			driver.quit();
 		}
 	}
 
@@ -91,7 +89,7 @@ class CloudStorageApplicationTests {
 	public void createNote() {
 		doMockSignUp("LocNH14","LocNH14","LocNH14","1234");
 
-		doLogIn("LocNH14", "1234");
+		doLogIn("LocNH14", "123456");
 		WebElement notesTab= driver.findElement(By.id("nav-notes-tab"));
 		notesTab.click();
 
@@ -106,19 +104,16 @@ class CloudStorageApplicationTests {
 		webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("note-title")));
 		WebElement inputTitle = driver.findElement(By.id("note-title"));
 		inputTitle.click();
-		inputTitle.sendKeys("NoteTitle");
+		inputTitle.sendKeys("NoteTitle 1");
 
 		WebElement inputDescription = driver.findElement(By.id("note-description"));
 		inputDescription.click();
-		inputDescription.sendKeys("NoteDescription.");
+		inputDescription.sendKeys("NoteDescription 1.");
 
 		WebElement submitNote = driver.findElement(By.id("saveNote"));
 		submitNote.click();
 
 		checkGoToNoteTab();
-
-	/*	webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("userTable")));
-		Assertions.assertTrue(driver.findElement(By.id("table-description")).getText().contains("NoteDescription"));*/
 
 	}
 	@Test
@@ -148,7 +143,7 @@ class CloudStorageApplicationTests {
 		WebElement inputDescription = driver.findElement(By.id("note-description"));
 		inputDescription.click();
 		inputDescription.clear();
-		inputDescription.sendKeys("UpdateDescription");
+		inputDescription.sendKeys("Update Description");
 
 		WebElement submitNote = driver.findElement(By.id("saveNote"));
 		submitNote.click();
@@ -156,7 +151,7 @@ class CloudStorageApplicationTests {
 		checkGoToNoteTab();
 
 		webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("userTable")));
-		Assertions.assertTrue(driver.findElement(By.id("noteDescription")).getText().contains("UpdateDescription"));
+		Assertions.assertTrue(driver.findElement(By.id("noteDescription")).getText().contains("Update Description 2"));
 
 	}
 	@Test
@@ -203,11 +198,11 @@ class CloudStorageApplicationTests {
 
 		WebElement inputUserNm = driver.findElement(By.id("credential-username"));
 		inputUserNm.click();
-		inputUserNm.sendKeys("nhan");
+		inputUserNm.sendKeys("LocNH14");
 
 		WebElement inputPass = driver.findElement(By.id("credential-password"));
 		inputPass.click();
-		inputPass.sendKeys("nhan");
+		inputPass.sendKeys("123456");
 
 		WebElement submitCre = driver.findElement(By.id("credentialSave"));
 		submitCre.click();
@@ -215,7 +210,7 @@ class CloudStorageApplicationTests {
 		checkGoToCredentialsTab();
 
 		webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("credentialTable")));
-		Assertions.assertTrue(driver.findElement(By.id("creUserNm")).getText().contains("nhan"));
+		Assertions.assertTrue(driver.findElement(By.id("creUserNm")).getText().contains("LocNH14"));
 	}
 
 	@Test
@@ -241,22 +236,18 @@ class CloudStorageApplicationTests {
 		WebElement inputUserNm = driver.findElement(By.id("credential-username"));
 		inputUserNm.click();
 		inputUserNm.clear();
-		inputUserNm.sendKeys("Duongnhan");
+		inputUserNm.sendKeys("LocNH14");
 
 		webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("credential-password")));
 		WebElement inputPass = driver.findElement(By.id("credential-password"));
 		inputPass.click();
 		inputPass.clear();
-		inputPass.sendKeys("nhannhan");
+		inputPass.sendKeys("123456");
 
 		WebElement submitCre = driver.findElement(By.id("credentialSave"));
 		submitCre.click();
 
 		checkGoToCredentialsTab();
-
-		/*webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("credentialTable")));
-		Assertions.assertTrue(driver.findElement(By.id("cre-userNm")).getText().contains("Duongnhan"));*/
-
 	}
 
 
@@ -307,11 +298,6 @@ class CloudStorageApplicationTests {
 		WebElement buttonSignUp = driver.findElement(By.id("buttonSignUp"));
 		buttonSignUp.click();
 
-		/* Check that the sign up was successful.
-		// You may have to modify the element "success-msg" and the sign-up
-		// success message below depening on the rest of your code.
-		*/
-		//Assertions.assertTrue(driver.findElement(By.id("success-msg-signup")).getText().contains("Successfully!"));
 	}
 
 	

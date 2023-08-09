@@ -23,7 +23,4 @@ public interface NoteMapper {
 
     @Delete("DELETE FROM NOTES WHERE noteid = #{id}")
     int deleteById(Integer id);
-
-    @Select("SELECT * FROM NOTES WHERE userid = #{userId} ")
-    List<NoteModel> getAllByUser1();
 }
