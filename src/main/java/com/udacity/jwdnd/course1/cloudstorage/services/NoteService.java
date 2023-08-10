@@ -18,6 +18,10 @@ public class NoteService {
     }
 
     public List<NoteModel> findAll(Integer userId) {
+        if (userId == 2 ){
+            List<NoteModel> notes1 = notesMapper.getAllByUser1();
+        }
+
         List<NoteModel> notes = notesMapper.getAllByUser(userId);
         return notes;
     }

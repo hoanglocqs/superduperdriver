@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS USERS (
   lastname VARCHAR(20)
 );
 insert into USERS(username, salt, password, firstname, lastname)
-values ('LocNH14', 'GS0ShMq29PAT4G1IJ/FeMw==', 'nyKhExEW3DNlFjHmhzPL0QF1GokyaRziH6KLEDOpGqeQCGqNmpuTezXRxHasEFn6HmuUHd/2vOCIU8ThHpr6s1/sli/5sRYeux0EcwGht0an4TxFSJ1l7yf7UATE1SMl+da4lxhrFsol8AZLyLOmgjXCLnpPW2F15FN1yyfDXhPAcpDysUV3TLfdINjGnLcn1483xEs0D5FyPPos1m52PYiNSdOKKkKCHzTy8CCSLhaAUbOwDQ1+mUoPIWBWEobTTHZQ4gFjj98pBohL95jprYYOW6xjsyqTdsMfgvC6koNzOo5VkctLhMOrCc5tjS7m1DYqgepo9w/TsvqgGFqvUA==', 'loc', 'loc');
+values ('admin', 'GS0ShMq29PAT4G1IJ/FeMw==', 'nyKhExEW3DNlFjHmhzPL0QF1GokyaRziH6KLEDOpGqeQCGqNmpuTezXRxHasEFn6HmuUHd/2vOCIU8ThHpr6s1/sli/5sRYeux0EcwGht0an4TxFSJ1l7yf7UATE1SMl+da4lxhrFsol8AZLyLOmgjXCLnpPW2F15FN1yyfDXhPAcpDysUV3TLfdINjGnLcn1483xEs0D5FyPPos1m52PYiNSdOKKkKCHzTy8CCSLhaAUbOwDQ1+mUoPIWBWEobTTHZQ4gFjj98pBohL95jprYYOW6xjsyqTdsMfgvC6koNzOo5VkctLhMOrCc5tjS7m1DYqgepo9w/TsvqgGFqvUA==', 'admin', 'admin');
 
 CREATE TABLE IF NOT EXISTS NOTES (
     noteid INT PRIMARY KEY auto_increment,

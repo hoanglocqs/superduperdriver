@@ -38,6 +38,17 @@ public class FileController {
         fileModel.setFileData(file.getBytes());
         fileModel.setUserId(user.getUserId());
 
+        if (!filesService.isExsisFile(file.getOriginalFilename(), user.getUserId())) {
+            model.addAttribute("error", "File upload failed");
+            return "result";
+
+        }
+
+        long maxSize = 10485760; // 10 MB (trong byte)
+        if (file.getSize() > maxSize) {
+            model.addAttribute("error", "File upload failed");
+            return "result";
+        }
         if (!StringUtils.hasText(fileModel.getFileName())
                 || !StringUtils.hasText(fileModel.getContentType())
         ) {

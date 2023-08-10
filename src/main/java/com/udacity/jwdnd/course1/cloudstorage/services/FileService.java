@@ -32,4 +32,12 @@ public class FileService {
     public FileModel getFileById(Integer fileId){
         return filesMapper.getFileById(fileId);
     }
+
+    public boolean isExsisFile(String fileName, Integer userId) {
+        int cnt = filesMapper.getFileByFileName(fileName,userId);
+        if (cnt != 0){
+            return false;
+        }
+        return true;
+    }
 }

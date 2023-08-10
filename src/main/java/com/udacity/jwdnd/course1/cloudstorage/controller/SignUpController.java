@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -28,13 +29,13 @@ public class SignUpController {
     }
 
     @PostMapping
-    public String create(@ModelAttribute("user") User userModel, Model model) {
+    public String create(@Valid @ModelAttribute("user") User userModel, Model model, RedirectAttributes redirectAttributes) {
 
         int cnt = signUpService.create(userModel);
-        if (cnt != 0) {
-            model.addAttribute("success", "SignUp uccessfully!");
+        if(cnt != 0) {
+            redirectAttributes.addFlashAttribute("mess", "Sign up Successfully!");
         } else {
-            model.addAttribute("error", "SignUp failed");
+            redirectAttributes.addFlashAttribute("mess", "Sign up fail");
         }
         return "redirect:/login";
     }
